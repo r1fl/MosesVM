@@ -26,6 +26,9 @@ Vagrant installation on Linux may vary between distributions, please refer to th
 ## Includes
 
 - GDB pwndbg
+- GDB peda
 - pwntools
 - radare2
 - tmux, vim
+- ipython
+
