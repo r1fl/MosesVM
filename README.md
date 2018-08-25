@@ -1,6 +1,8 @@
-# MosheVM
+# MosesVM
 
-This is an attempt to provide a secure sandbox for researching executables safetly and easily.
+This is an attempt to provide a secure sandbox for researching pwnables \ executables safetly and easily.
+
+![imgur](https://i.imgur.com/QOlQBua.gif)
 
 ## Installation
 
@@ -15,7 +17,7 @@ This is an attempt to provide a secure sandbox for researching executables safet
 
 ### Note
 
-Vagrant installation on Linux may vary between distributions, please refeer to the [docs](https://www.vagrantup.com/docs/installation/) for father detail.
+Vagrant installation on Linux may vary between distributions, please refer to the [docs](https://www.vagrantup.com/docs/installation/) for further detail.
 
 ## Usage
 
