@@ -5,7 +5,7 @@
 HOME="/home/vagrant"
 INSTALLDIR="/usr/local"
 
-ONLOGIN="gdb; logout"
+ONLOGIN="gdb"
 PYTHONVER="2"
 
 # === EVENT FUNCTIONS ===
@@ -17,7 +17,7 @@ START_HOOK () {
 
 FINISH_HOOK () {
 	# login shell
-	echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; fi' >> $HOME/.bashrc
+	echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; logout; fi' >> $HOME/.bashrc
 	chown vagrant: $HOME/.bashrc
 
 	# python version
@@ -57,6 +57,7 @@ git clone https://github.com/longld/peda
 # pwntools
 if [ $PYTHONVER -eq "2" ]; then
 	pip2 install --upgrade pwntools
+	sed -i -e 's/ENUM_P_TYPE/ENUM_P_TYPE_BASE/g' '/usr/local/lib/python2.7/dist-packages/pwnlib/elf/elf.py'
 else
 	git clone https://github.com/arthaud/python3-pwntools
 	python3 -m pip install ./python3-pwntools
