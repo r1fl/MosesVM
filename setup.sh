@@ -30,9 +30,14 @@ FINISH_HOOK () {
 
 START_HOOK
 
-# === TOOLS ===
+# == 32 bit ===
+
+dpkg --add-architecture i386 
 
 apt-get update
+apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+
+# === TOOLS ===
 
 apt-get install -y gcc
 apt-get install -y gdb
