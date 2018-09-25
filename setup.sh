@@ -34,8 +34,9 @@ START_HOOK
 
 dpkg --add-architecture i386 
 
-apt-get update
-apt-get install libc6:i386 libncurses5:i386 libstdc++6:i386
+apt-get update -y
+apt-get upgrade -y
+apt-get install -y libc6:i386 libncurses5:i386 libstdc++6:i386
 
 # === TOOLS ===
 
