@@ -17,7 +17,7 @@ START_HOOK () {
 
 FINISH_HOOK () {
 	# login shell
-	echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; logout; fi' >> $HOME/.bashrc
+	# echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; logout; fi' >> $HOME/.bashrc
 	chown vagrant: $HOME/.bashrc
 
 	# python version
