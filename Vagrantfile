@@ -1,13 +1,15 @@
 Vagrant.configure("2") do |config|
 	config.vm.provision :shell, path: "setup.sh", :privileged => true
-	config.vm.hostname = "MosesVM"
+	#config.vm.hostname = "MosesVM"
 
 	name = "MosesVM"
 	memory = 2048
 
 	config.vm.provider "virtualbox" do |virtualbox, override|
 		override.vm.box = "bento/ubuntu-16.04"
+
 		virtualbox.memory = memory
+		virtualbox.name = name
 	end
 
 	config.vm.provider "libvirt" do |libvirt, override|
