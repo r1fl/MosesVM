@@ -8,6 +8,7 @@ This is an attempt to provide a secure sandbox for researching pwnables \ execut
 
 1. Install a hypervisor. The following hypervisors are supported:
 	- VirtualBox (default, recommended)
+	- libvirt
 2. Install Vagrant:
 	- OSX: ``brew cask install vagrant``
 	- Linux: ``sudo pacman -S vagrant``
