@@ -1,8 +1,17 @@
 #!/bin/bash
 
+cat /etc/passwd | grep "vagrant:" 2>&1
+
+if [ $? -eq 0 ]; then
+	USERNAME="vagrant"
+	cp -rpf /vagrant/* /home/vagrant
+else
+	USERNAME="moses"
+fi
+
 # === CONSTANTS ===
 
-HOME="/home/vagrant"
+HOME="/home/$USERNAME"
 INSTALLDIR="/usr/local"
 
 ONLOGIN="gdb"
@@ -13,19 +22,22 @@ PYTHONVER="2"
 START_HOOK () {
 	export HOME
 	cd $INSTALLDIR
+
+	chown -R $USERNAME: $HOME/*
 }
 
 FINISH_HOOK () {
 	# login shell
-	# echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; logout; fi' >> $HOME/.bashrc
-	chown vagrant: $HOME/.bashrc
+	#echo 'if [ $(pgrep -c '$ONLOGIN') -eq 0 ]; then '$ONLOGIN'; logout; fi' >> $HOME/.bashrc
+	#chown vagrant: $HOME/.bashrc
 
 	# python version
 	ln -sf "/usr/bin/python$PYTHONVER" "/usr/bin/python"
 	ln -sf "/usr/bin/pip$PYTHONVER" "/usr/bin/pip"
 
+	#git checkout .
 	# gdb init
-	cp -f /vagrant/gdbinit $HOME/.gdbinit
+	#cp -f /vagrant/gdbinit $HOME/.gdbinit
 }
 
 START_HOOK
